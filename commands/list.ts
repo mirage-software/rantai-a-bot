@@ -16,10 +16,13 @@ export default {
         let embed = new MessageEmbed()
             .setTitle(`Available autoresponses`)
 
-        let description = "Name | Title\n-----------------\n";
+        let description = "\`Name | Keywords\`\n";
+
+        let index = 0;
 
         for (let res of responses) {
-            description += `${res.name} | ${res.title}\n`;
+            index++;
+            description += `${index}. \`${res.name} | ${res.keywords.toString()}\`\n`;
         }
 
         embed.setDescription(description);

@@ -45,6 +45,10 @@ export default {
 
             const params = i.customId.split("_")[1];
 
+            if(i.user.id !== interaction.user.id) {
+                return;
+            }
+
             if (params === "confirm") {
 
                 let embed = new MessageEmbed()
@@ -62,7 +66,11 @@ export default {
 
         collector.on("end", async () => {
 
+            try{
             await interaction.deleteReply();
+            } catch(Exception) {
+
+            }
 
         });
 

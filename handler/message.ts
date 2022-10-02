@@ -11,7 +11,7 @@ export default (client: Client) => {
 
         if (message.channelId === process.env.channelid) {
 
-            if (message.cleanContent.startsWith("??")) {
+            if (message.cleanContent.startsWith("?") && !message.cleanContent.startsWith("??")) {
                 callembed(message, message.cleanContent);
             } else {
                 checkkeywords(message, message.cleanContent);
@@ -24,7 +24,7 @@ export default (client: Client) => {
 
 async function callembed(message: any, text: any) {
 
-    let name = text.split(" ")[0].replace("??", "");
+    let name = text.split(" ")[0].replace("?", "");
 
 
     let res = await autoresponse.findOne({ name: name });
@@ -38,8 +38,6 @@ async function callembed(message: any, text: any) {
         message.reply({ embeds: [embed] })
         return;
     } else {
-
-        console.log(res.author!);
 
         const embed = new MessageEmbed()
             .setTitle(res.title!)

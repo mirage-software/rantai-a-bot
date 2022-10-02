@@ -52,8 +52,6 @@ export default {
             res.title = title;
             res.body = description;
 
-            console.log(interaction.user);
-
             let author = { text: `${interaction.user.username}`, iconURL: `https://cdn.discordapp.com/avatars/${interaction.user.id}/${interaction.user.avatar}.png` }
 
             res.author = author;
