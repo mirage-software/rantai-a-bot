@@ -52,14 +52,12 @@ async function callembed(message: any, text: any) {
 
 async function checkkeywords(message: any, cleanContent: string) {
 
-    if (keywordMap.size === 0) {
-        let responses = await autoresponse.find();
+    let responses = await autoresponse.find();
 
-        for (let res of responses) {
-            keywordMap.set(res.name!, res.keywords);
-        }
+    for (let res of responses) {
+        keywordMap.set(res.name!, res.keywords);
     }
-
+    
     let foundkey;
 
     keywordMap.forEach((value: string[], key: string) => {
