@@ -22,7 +22,7 @@ export default {
                 { name: "name", value: "name" },
                 { name: "keywords", value: "keywords" },
                 { name: "title", value: "title" },
-                { name: "body", value: "body" },
+                { name: "body", value: "body" }
             ]
         },
         {
