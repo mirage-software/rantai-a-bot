@@ -12,9 +12,10 @@ export default (client: Client) => {
         if (message.channelId === process.env.channelid) {
 
             if (message.cleanContent.startsWith("?") && !message.cleanContent.startsWith("??")) {
-                callembed(message, message.cleanContent);
+                if(message.cleanContent.length > 3)
+                callembed(message, message.cleanContent.toLowerCase());
             } else {
-                checkkeywords(message, message.cleanContent);
+                checkkeywords(message, message.cleanContent.toLowerCase());
             }
         }
 
@@ -61,7 +62,7 @@ async function checkkeywords(message: any, cleanContent: string) {
     let foundkey;
 
     keywordMap.forEach((value: string[], key: string) => {
-        if (value.every((i) => cleanContent.includes(i))) {
+        if (value.every((i) => cleanContent.includes(i.toLowerCase()))) {
 
             foundkey = key;
 
