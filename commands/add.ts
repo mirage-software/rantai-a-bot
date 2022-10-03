@@ -48,7 +48,7 @@ export default {
             res = new autoresponse();
 
             res.name = name;
-            res.keywords = keywords.trim().split(",");
+            res.keywords = keywords.split(",").map(i => i.trim());
             res.title = title;
             res.body = description;
 
