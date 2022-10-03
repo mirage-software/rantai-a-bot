@@ -66,7 +66,7 @@ export default {
                 break;
             case "keywords":
 
-                res.keywords = value.split(",").map(i => i.trim());
+                res.keywords = value.split(",").map((i:any) => i.trim());
                 res.save();
 
                 embed
