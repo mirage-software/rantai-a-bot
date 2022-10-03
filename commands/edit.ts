@@ -42,6 +42,8 @@ export default {
 
         let res: any = await autoresponse.findOne({ name: name });
 
+        let embed = new MessageEmbed()
+
         switch (field) {
 
             case "name":
@@ -54,7 +56,7 @@ export default {
                     res.save();
                 } else {
                     
-                    let embed = new MessageEmbed()
+                    embed
                     .setTitle(`Already exists`)
                     .setDescription(`The autoresponse \`${name}\` already exists`);
 
@@ -67,11 +69,25 @@ export default {
                 res.keywords = value.trim().split(",");
                 res.save();
 
+                embed
+                .setTitle(`Keywords were updated`)
+                .setDescription(`Keywords are now \`${res.keywords.join(", ")}\``);
+        
+                await interaction.deferReply({ ephemeral: true });
+                await interaction.editReply({embeds: [embed]});
+
                 break;
             case "title":
 
                 res.title = value;
                 res.save();
+
+                embed
+                .setTitle(`Title was updated`)
+                .setDescription(`Title is now  \`${res.title}\``);
+        
+                await interaction.deferReply({ ephemeral: true });
+                await interaction.editReply({embeds: [embed]});
 
                 break;
             case "body":
@@ -79,10 +95,15 @@ export default {
                 res.body = value;
                 res.save();
 
+                embed
+                .setTitle(`Body was updated`)
+                .setDescription(`Keywords are now \`${res.body}\``);
+        
+                await interaction.deferReply({ ephemeral: true });
+                await interaction.editReply({embeds: [embed]});
+
                 break;
         }
-
-
 
     }
 } as ICommand
