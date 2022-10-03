@@ -64,7 +64,7 @@ export default {
                 break;
             case "keywords":
 
-                res.keywords = value.split(",");
+                res.keywords = value.trim().split(",");
                 res.save();
 
                 break;

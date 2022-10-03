@@ -22,7 +22,7 @@ export default {
 
         for (let res of responses) {
             index++;
-            description += `${index}. \`${res.name} | ${res.keywords.toString()}\`\n`;
+            description += `${index}. \`${res.name} | ${res.keywords.join(", ")}\`\n`;
         }
 
         embed.setDescription(description);
